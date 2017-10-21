@@ -8,17 +8,7 @@ import java.net.*;
 public class TestReceive {
 
     public static void main(String[] args) {
-        post("receive-sms", (req, res) -> {
 
-            String bodyMessage = getMessageBody(req.body());
-
-            String reply = "You just sent: " + bodyMessage;
-
-            Message sms = new Message.Builder().body(new Body(reply)).build();
-            MessagingResponse twiml = new MessagingResponse.Builder().message(sms).build();
-
-            return twiml.toXml();
-        });
     }
 
     private static String getMessageBody(String str) {

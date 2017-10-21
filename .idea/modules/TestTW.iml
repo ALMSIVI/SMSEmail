@@ -10,6 +10,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javax.mail" level="project" />
-    <orderEntry type="library" name="twilio-7.15.3" level="project" />
+    <orderEntry type="library" name="slf4j-simple-1.7.25" level="project" />
   </component>
 </module>

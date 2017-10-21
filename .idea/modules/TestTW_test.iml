@@ -44,6 +44,7 @@
     <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-security:9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="slf4j-simple-1.7.25" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="TestTW_main" />
 </module>

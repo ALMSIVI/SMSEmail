@@ -22,8 +22,7 @@ public class Main {
 
             String bodyMessage = getMessageBody(req.body());
 
-            String[] recipient = {"xig074@ucsd.edu"};
-            EmailFile newEmail = new EmailFile(recipient, "Test Subject", "Test body");
+            EmailFile newEmail = new EmailFile(bodyMessage);
             SendMail.run(newEmail, email, password);
 
             Message sms = new Message.Builder().body(new Body("mail sent")).build();

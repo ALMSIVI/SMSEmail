@@ -31,7 +31,7 @@ public class SendMail {
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(toEmail));
                 message.setSubject(email.getSubject());
-                message.setText(email.getPassage());
+                message.setText(email.getMessage());
 
                 Transport.send(message);
 
