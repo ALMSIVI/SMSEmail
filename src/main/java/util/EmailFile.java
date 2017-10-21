@@ -1,3 +1,5 @@
+package util;
+
 /**
  * Created by YueWu on 10/21/2017.
  */
@@ -8,6 +10,12 @@ public class EmailFile {
 
     public EmailFile(String message) {
 
+    }
+
+    public EmailFile(String[] recipients, String subject, String passage) {
+        this.recipients = recipients;
+        this.subject = subject;
+        this.passage = passage;
     }
 
     public String[] getRecipients() {
