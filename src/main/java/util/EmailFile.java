@@ -1,4 +1,6 @@
 package util;
+import gui.Main;
+
 import java.util.Arrays;
 
 /**
@@ -22,27 +24,31 @@ public class EmailFile {
         }
 
         else {
-            this.recipients = info[1].split(";");
-            this.subject = info[2];
-            this.message = message.substring(message.indexOf('\n') + 1);
+
+            switch(info[0].toLowerCase()) {
+                case "send":
+                    this.recipients = info[1].split(";");
+                    this.subject = info[2];
+                    this.message = message.substring(message.indexOf('\n') + 1);
+                    break;
+
+                case "forward":
+                    this.message = Main.currentEmail.getMessage();
+                    this.recipients = info[1].split(";");
+                    this.subject = "Fwd: " + Main.currentEmail.getSubject();
+                    break;
+
+                case "reply":
+                    // TODO: On xxx, sb. wrote:
+                    this.message = lines[1] + "\n------\n" +  Main.currentEmail.getMessage();
+                    this .recipients = Main.currentEmail.getRecipients();
+                    this.subject = "Re: " +  Main.currentEmail.getSubject();
+                    break;
+            }
+
         }
 
     }
-
-    // For forward and reply
-    public EmailFile(EmailFile original, String newInfo, boolean forward) {
-        if (forward) { // forward
-            this.message = original.getMessage();
-            this.recipients = newInfo.split(";");
-            this.subject = "Fwd: " + original.getSubject();
-        } else { // reply
-            // TODO: On xxx, sb. wrote:
-            this.message = newInfo + "\n------\n" + original.getMessage();
-            this .recipients = original.getRecipients();
-            this.subject = "Re: " + original.getSubject();
-        }
-    }
-
 
     public String[] getRecipients() {
         return recipients;

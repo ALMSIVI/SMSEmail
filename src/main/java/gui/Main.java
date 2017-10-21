@@ -15,6 +15,8 @@ public class Main {
     private static String email;
     private static String password;
 
+    public static EmailFile currentEmail;
+
     public static void main(String[] args) {
         new MainFrame().launchFrame();
 
