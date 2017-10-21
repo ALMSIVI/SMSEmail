@@ -1,3 +1,5 @@
+package util;
+
 /**
  * Created by YueWu on 10/21/2017.
  */
@@ -9,14 +11,6 @@ public class EmailFile {
     public static int MIN_INFO = 3;
     public static int MIN_LINE = 2;
 
-    // default
-    public EmailFile(String[] recipients, String subject, String message) {
-        this.recipients = recipients;
-        this.subject = subject;
-        this.message = message;
-    }
-
-    // send
     public EmailFile(String message) {
         String lines[] = message.split("\n");
         String info[] = lines[0].split(" ");
@@ -36,7 +30,6 @@ public class EmailFile {
         }
 
     }
-
 
     public String[] getRecipients() {
         return recipients;
