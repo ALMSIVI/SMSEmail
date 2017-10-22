@@ -1,6 +1,7 @@
 package util;
 
 import gui.Main;
+import java.util.regex.*;
 
 /**
  * Created by YueWu on 10/21/2017.
@@ -48,7 +49,7 @@ public class MessageProcessor {
                 }
                 recipients = info[1].split(";");
                 subject = info[2];
-                message = s.substring(message.indexOf('\n') + 1);
+                message = s.substring(s.indexOf('\n') + 1);
                 email = new EmailFile(recipients, subject, message);
                 SendMail.run(email);
                 break;
@@ -59,7 +60,7 @@ public class MessageProcessor {
                 }
                 message = Main.currentEmail.getMessage();
                 if(lines.length > 1) {
-                    message = s.subString(s.indexOf('\n') + 1) + "\n------\n" + message;
+                    message = s.substring(s.indexOf('\n') + 1) + "\n------\n" + message;
                 }
                 recipients = info[1].split(";");
                 subject = "Fwd: " + Main.currentEmail.getSubject();
@@ -72,7 +73,7 @@ public class MessageProcessor {
                     // TODO
                 }
                 // TODO: On xxx, sb. wrote:
-                message = s.subString(s.indexOf('\n') + 1) + "\n------\n" + Main.currentEmail.getMessage();
+                message = s.substring(s.indexOf('\n') + 1) + "\n------\n" + Main.currentEmail.getMessage();
                 recipients = Main.currentEmail.getRecipients();
                 subject = "Re: " +  Main.currentEmail.getSubject();
                 email = new EmailFile(recipients, subject, message);
@@ -85,7 +86,18 @@ public class MessageProcessor {
 
     }
 
+    // Check if is valid email
     public boolean check(String emails) {
-        if(info.length != 3)
+        String[] emailArray = emails.split(";");
+        for (String email : emailArray) {
+            String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(email);
+            if (!matcher.matches()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
