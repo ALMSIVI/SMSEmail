@@ -24,7 +24,8 @@ public class Main {
 
             String bodyMessage = getMessageBody(req.body());
 
-            util.Message currentMessage = new util.Message(bodyMessage);
+            MessageProcessor processor = new MessageProcessor();
+            processor.process(bodyMessage);
 
             Message sms = new Message.Builder().body(new Body("mail sent")).build();
             MessagingResponse twiml = new MessagingResponse.Builder().message(sms).build();
