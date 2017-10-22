@@ -36,7 +36,7 @@ public class Message {
             case "forward":
             case "reply":
                 EmailFile toSend = new EmailFile(s);
-                // TODO: send email
+                SendMail.run(toSend);
                 break;
 
             default: // wrong command

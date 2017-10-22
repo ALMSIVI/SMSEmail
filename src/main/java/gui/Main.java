@@ -24,8 +24,7 @@ public class Main {
 
             String bodyMessage = getMessageBody(req.body());
 
-            EmailFile newEmail = new EmailFile(bodyMessage);
-            SendMail.run(newEmail, email, password);
+            util.Message currentMessage = new util.Message(bodyMessage);
 
             Message sms = new Message.Builder().body(new Body("mail sent")).build();
             MessagingResponse twiml = new MessagingResponse.Builder().message(sms).build();
